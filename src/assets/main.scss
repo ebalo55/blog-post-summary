@@ -1,0 +1,139 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, sans-serif;
+	outline: none;
+	text-decoration: none;
+}
+
+.view {
+	height: 100vh;
+	width: 100vw;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+	.toggle-dark-mode {
+		border: .15rem solid #333;
+		border-radius: .15rem;
+		height: 2rem;
+		width: 2rem;
+		
+		position: absolute;
+		top: 5rem;
+		left: 5rem;
+		
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: all .5s;
+		cursor: pointer;
+		
+		&:hover {
+			color: #eee;
+			background-color: #333;
+		}
+	}
+	
+	.post-wrapper {
+		display: flex;
+		flex-direction: column;
+		width: 30rem;
+		height: 35rem;
+		
+		header {
+			img {
+				object-position: center;
+				object-fit: contain;
+				width: 100%;
+				border-radius: .5rem;
+				margin-bottom: 1rem;
+				box-shadow: 5px 5px 10px rgba(#333, .25);
+			}
+			
+			h2 {
+				color: #111;
+				font-weight: 500;
+				position: relative;
+				transition: all .5s ease-in-out;
+				
+				&:before {
+					content: "";
+					position: absolute;
+					bottom: -.35rem;
+					left: 0;
+					
+					width: 0;
+					height: .15rem;
+					
+					transition: all 1s ease-in-out;
+					background-color: lighten(mediumpurple, 15%);
+				}
+			}
+			
+			a:hover {
+				h2 {
+					color: darken(purple, 5%);
+					
+					&:before {
+						width: 100%;
+					}
+				}
+			}
+		}
+		
+		section {
+			white-space: pre-line;
+			font-family: "Nunito", sans-serif;
+			font-weight: 300;
+			margin-top: 1rem;
+			padding: .5rem;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			text-align: justify;
+			
+			display: -webkit-box;
+			-webkit-line-clamp: 11;
+			-webkit-box-orient: vertical;
+		}
+	}
+	
+	&.dark {
+		background-color: #333;
+		
+		.toggle-dark-mode {
+			border-color: #eee;
+			color: #ddd;
+			
+			&:hover {
+				color: yellow;
+				border-color: yellow;
+			}
+		}
+		
+		header {
+			img {
+				box-shadow: 5px 5px 10px rgba(#ddd, .05);
+			}
+			
+			h2 {
+				color: #ccc;
+				
+				&:before {
+					background-color: lighten(#ddd, 2.5%);
+				}
+			}
+			
+			a:hover {
+				h2 {
+					color: lighten(#ddd, 5%);
+				}
+			}
+		}
+		
+		section {
+			color: #eee;
+		}
+	}
+}
